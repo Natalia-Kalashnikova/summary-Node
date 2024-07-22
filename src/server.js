@@ -79,6 +79,7 @@ import { env } from './utils/env.js';
 import { ENV_VARS } from './constants/index.js';
 import { errorHandlerMiddleware } from './middlewares/errorHandlerMiddleware.js';
 import { notFoundMiddleware } from './middlewares/notFoundMiddleware.js';
+import { getAllStudents } from './services/students.js';
 
 
 export const startServer = () => {
@@ -94,13 +95,26 @@ export const startServer = () => {
 
     app.use(cors());
 
-    app.get('/world', (req, res) => {
-        res.send('Hello world');
-    });
+    app.get('/students', async(req, res, next) => {
+    const students = await getAllStudents()
+        res.json({
+            status: 200,
+            message: 'Successfully get all students!',
+            data: students,
+        });
+});
 
-    app.get('/error', (req, res, next) => {
-        next(new Error('some error here'));
-    });
+//     add.get('/students/:studentId', req.res, next)=> {
+
+// };
+
+    // app.get('/world', (req, res) => {
+    //     res.send('Hello world');
+    // });
+
+    // app.get('/error', (req, res, next) => {
+    //     next(new Error('some error here'));
+    // });
 
     app.use(notFoundMiddleware);
 
