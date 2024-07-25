@@ -1,35 +1,24 @@
 import { Router } from "express";
-import { getAllStudents, getStudentById } from "../services/students.js";
+import {
+  getStudentsController,
+  getStudentByIdController,
+  createStudentController,
+  deleteStudentController,
+  upsertStudentController,
+} from "../controllers/students.js";
+import { ctrWrapper } from "../utils/ctrlWrapper.js";
 
 
 const studentsRouter = Router();
 
-studentsRouter.get('/students', async (req, res) => {
-    const students = await getAllStudents();
+studentsRouter.get('/students', ctrWrapper(getStudentsController));
 
-    res.json({
-      status: 200,
-      message: 'Successfully get all students!',
-      data: students,
-    });
-  });
+studentsRouter.get('/students/:studentId', (getStudentByIdController));
 
-  studentsRouter.get('/students/:studentId', async (req, res) => {
-    const id = req.params.studentId;
-    const student = await getStudentById(id);
+studentsRouter.post('/students', ctrWrapper(createStudentController));
 
-    if (!student) {
-      return res.status(404).json({
-        status: 404,
-        message: `Student with id ${id} not found!`,
-      });
-    }
+studentsRouter.delete('/students/:studentId', ctrWrapper(deleteStudentController));
 
-    res.json({
-      status: 200,
-      message: `Successfully get student with id ${id}!`,
-      data: student,
-    });
-  });
+studentsRouter.put('/students/:studentId', ctrWrapper(upsertStudentController));
 
 export default studentsRouter;

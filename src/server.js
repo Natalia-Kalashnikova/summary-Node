@@ -69,6 +69,11 @@ import studentsRouter from './routers/students.js';
 export const startServer = () => {
   const app = express();
 
+  app.use(express.json({
+    type: ['application/json', 'application/vnd.api+json'],
+    limit: '100kb',
+  }));
+
   app.use(
     pino({
       transport: {
@@ -81,7 +86,7 @@ export const startServer = () => {
 
   app.use(studentsRouter);
 
-  app.use(notFoundMiddleware);
+  app.use('*', notFoundMiddleware);
 
   app.use(errorHandlerMiddleware);
 
