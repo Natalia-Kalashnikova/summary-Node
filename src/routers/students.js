@@ -5,6 +5,7 @@ import {
   createStudentController,
   deleteStudentController,
   upsertStudentController,
+  patchStudentController,
 } from "../controllers/students.js";
 import { ctrWrapper } from "../utils/ctrlWrapper.js";
 
@@ -20,5 +21,7 @@ studentsRouter.post('/students', ctrWrapper(createStudentController));
 studentsRouter.delete('/students/:studentId', ctrWrapper(deleteStudentController));
 
 studentsRouter.put('/students/:studentId', ctrWrapper(upsertStudentController));
+
+studentsRouter.patch('/students/:studentId', ctrWrapper(patchStudentController));
 
 export default studentsRouter;
