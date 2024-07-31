@@ -15,6 +15,40 @@ export const getStudentById = async (id) => {
   return student;
 };
 
+export const createStudent = async (payload) => {
+  const student = await Student.create(payload);
+  return student;
+};
+
+export const upsertStudent = async (id, payload) => {
+  const student = await Student.findByIdAndUpdate(id, payload, { new: true });
+
+  if (!student) {
+    throw createHttpError(404, 'Student not found');
+  }
+  return student;
+};
+
+// export const upsertStudent = async (id, payloud, options = {}) => {
+//   const rawResult = await Student.findByIdAndDelete(id, payloud, {
+//     new: true,
+//     includeResultMetadata: true,
+//     ...options,
+//   });
+
+//   if (!rawResult || rawResult.value) {
+//     throw createHttpError(404, 'Student not found');
+//   }
+//   return {
+//     student: rawResult.value,
+//     isNew: !rawResult?.lastErrorObject?.updatedExisting,
+//   };
+// };
+
+export const deleteStudentById = async (studentId) => {
+  await Student.findByIdAndDelete(studentId);
+};
+
 // import { Student } from '../db/models/student.js';
 
 
