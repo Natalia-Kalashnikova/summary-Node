@@ -45,6 +45,19 @@ export const patchStudentController = async (req, res) => {
     });
 };
 
+export const putStudentController = async (req, res) => {
+    const { body } = req;
+    const {studentId} = req.params;
+    const { isNew, student } = await upsertStudent(studentId, body, { upsert: true });
+
+    const status = isNew ? 201 : 200;
+    res.status(status).json({
+        status,
+        message: `Successfully upserted student`,
+        data: student,
+    });
+};
+
 export const deleteStudentByIdController = async (req, res) => {
     const id = req.params.studentId;
     await deleteStudentById(id);
