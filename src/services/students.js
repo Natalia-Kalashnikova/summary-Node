@@ -1,8 +1,36 @@
 import createHttpError from 'http-errors';
 import { Student } from '../db/models/student.js';
+import { calculatePaginationData } from '../utils/alculatePaginationData.js';
+import { SORT_ORDER } from '../constants/index.js';
 
-export const getAllStudents = async () => {
-    return await Student.find();
+
+export const getAllStudents = async ({
+  page = 1,
+  perPage = 10,
+  sortOrder = SORT_ORDER.ASC,
+  sortBy='_id',
+}) => {
+  const limit = perPage;
+  const skip = (page - 1) * perPage;
+
+  const studentsQuery = Student.find();
+  const studentsCount = await Student.find()
+    .merge(studentsQuery)
+    .countDocuments();
+
+  const students = await
+    studentsQuery
+      .skip(skip)
+      .limit(limit)
+      .sort({ [sortBy]: sortOrder})
+      .exec();
+
+  const paginationData = calculatePaginationData(studentsCount, perPage, page);
+
+  return {
+    data: students,
+    ...paginationData,
+  };
 };
 
 export const getStudentById = async (id) => {
@@ -17,7 +45,7 @@ export const getStudentById = async (id) => {
 
 export const createStudent = async (payload) => {
   const student = await Student.create(payload);
-  
+
   return student;
 };
 
