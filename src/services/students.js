@@ -1,6 +1,6 @@
 import createHttpError from 'http-errors';
 import { Student } from '../db/models/student.js';
-import { calculatePaginationData } from '../utils/alculatePaginationData.js';
+import { calculatePaginationData } from '../utils/сalculatePaginationData.js';
 import { SORT_ORDER } from '../constants/index.js';
 
 
@@ -8,22 +8,43 @@ export const getAllStudents = async ({
   page = 1,
   perPage = 10,
   sortOrder = SORT_ORDER.ASC,
-  sortBy='_id',
+  sortBy = '_id',
+  filter={},
 }) => {
   const limit = perPage;
   const skip = (page - 1) * perPage;
 
   const studentsQuery = Student.find();
-  const studentsCount = await Student.find()
-    .merge(studentsQuery)
-    .countDocuments();
 
-  const students = await
+  if (filter.gender) {
+    studentsQuery.where('gender').equals(filter.gender);
+  }
+  if (filter.maxAge) {
+    studentsQuery.where('age').lte(filter.maxAge);
+  }
+  if (filter.maxAvgMark) {
+    studentsQuery.where('avgMark').gte(filter.minAvgMark);
+  }
+
+  // const studentsCount = await Student.find()
+  //   .merge(studentsQuery)
+  //   .countDocuments();
+
+  // const students = await
+  //   studentsQuery
+  //     .skip(skip)
+  //     .limit(limit)
+  //     .sort({ [sortBy]: sortOrder})
+  //     .exec();
+
+  const [studentsCount, students] = await Promise.all([
+    Student.find().merge(studentsQuery).countDocuments(),
     studentsQuery
       .skip(skip)
       .limit(limit)
-      .sort({ [sortBy]: sortOrder})
-      .exec();
+      .sort({ [sortBy]: sortOrder })
+      .exec(),
+  ]);
 
   const paginationData = calculatePaginationData(studentsCount, perPage, page);
 
