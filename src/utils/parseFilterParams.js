@@ -1,39 +1,39 @@
-const parseGender = (gender) => {
-    const isString = typeof gender === 'string';
-    if (!isString) return;
-    const isGender = (gender) => ['male', 'female', 'other'].includes(gender);
-    if (isGender(gender)) return gender;
-};
+// const parseGender = (gender) => {
+//     const isString = typeof gender === 'string';
+//     if (!isString) return;
+//     const isGender = (gender) => ['male', 'female', 'other'].includes(gender);
+//     if (isGender(gender)) return gender;
+// };
 
 
-const parseNumber = (number) => {
-    const isString = typeof number === 'string';
-    if (!isString) return;
+// const parseNumber = (number) => {
+//     const isString = typeof number === 'string';
+//     if (!isString) return;
 
-    const parsedNumber = parseInt(number);
-    if (Number.isNaN(parsedNumber)) {
-        return;
-    }
+//     const parsedNumber = parseInt(number);
+//     if (Number.isNaN(parsedNumber)) {
+//         return;
+//     }
 
-    return parsedNumber;
-};
+//     return parsedNumber;
+// };
 
 
-export const parseFilterParams = (query) => {
-    const { gender, maxAge, minAge, maxAvgMark, minAvgMark } =
-        query;
+// export const parseFilterParams = (query) => {
+//     const { gender, maxAge, minAge, maxAvgMark, minAvgMark } =
+//         query;
 
-    const parsedGender = parseGender(gender);
-    const parsedMaxAge = parseNumber(maxAge);
-    const parsedMinAge = parseNumber(minAge);
-    const parsedMaxAvgMark = parseNumber(maxAvgMark);
-    const parsedMinAvgMark = parseNumber(minAvgMark);
+//     const parsedGender = parseGender(gender);
+//     const parsedMaxAge = parseNumber(maxAge);
+//     const parsedMinAge = parseNumber(minAge);
+//     const parsedMaxAvgMark = parseNumber(maxAvgMark);
+//     const parsedMinAvgMark = parseNumber(minAvgMark);
 
-    return {
-        gender: parsedGender,
-        maxAge: parsedMaxAge,
-        minAge: parsedMinAge,
-        maxAvgMark: parsedMaxAvgMark,
-        minAvgMark: parsedMinAvgMark,
-    };
-};
+//     return {
+//         gender: parsedGender,
+//         maxAge: parsedMaxAge,
+//         minAge: parsedMinAge,
+//         maxAvgMark: parsedMaxAvgMark,
+//         minAvgMark: parsedMinAvgMark,
+//     };
+// };
