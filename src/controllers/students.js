@@ -85,9 +85,6 @@
 // };
 
 
-
-// Past
-
 // import {
 //     createStudent,
 //     deleteStudentById,
@@ -105,6 +102,7 @@
 //         data: students,
 //     });
 // };
+
 // export const getStudentByIdController = async (req, res) => {
 //     const id = req.params.studentId;
 //     const student = await getStudentById(id);
@@ -114,6 +112,7 @@
 //         data: student,
 //     });
 // };
+
 // export const createStudentController = async (req, res) => {
 //     const {body} = req;
 //     const student = await createStudent(body);
@@ -123,6 +122,7 @@
 //         data: student,
 //     });
 // };
+
 // export const patchStudentController = async (req, res) => {
 //     const { body } = req;
 //     const {studentId} = req.params;
@@ -153,9 +153,6 @@
 //     res.status(204).send();
 // };
 
-
-
-import createHttpError from "http-errors";
 import {
     createStudent,
     deleteStudentById,
@@ -163,23 +160,23 @@ import {
     getStudentById,
     upsertStudent
 } from "../services/students.js";
-import {Types} from 'mongoose';
+import { parsePaginationParams } from "../utils/parsePaginationParams.js";
+
 
 export const getStudentsController = async (req, res) => {
-    const students = await getAllStudents();
+  const { page, perPage } = parsePaginationParams(req.query);
+    const students = await getAllStudents({ page, perPage });
+
     res.json({
         status: 200,
         message: 'Successfully get all students!',
         data: students,
     });
 };
-export const getStudentByIdController = async (req, res, next) => {
+
+
+export const getStudentByIdController = async (req, res) => {
     const id = req.params.studentId;
-
-    if (!Types.ObjectId.isValid(id)) {
-        return next(createHttpError(400, 'Invalid Id'));
-    }
-
     const student = await getStudentById(id);
     res.json({
         status: 200,
@@ -187,6 +184,7 @@ export const getStudentByIdController = async (req, res, next) => {
         data: student,
     });
 };
+
 export const createStudentController = async (req, res) => {
     const {body} = req;
     const student = await createStudent(body);
@@ -196,6 +194,7 @@ export const createStudentController = async (req, res) => {
         data: student,
     });
 };
+
 export const patchStudentController = async (req, res) => {
     const { body } = req;
     const {studentId} = req.params;
