@@ -27,35 +27,6 @@
 
 // studentsRouter.delete('/students/:studentId', isValidId, ctrWrapper(deleteStudentByIdController));
 
-
-// export default studentsRouter;
-
-
-
-// import { Router } from "express";
-// import {
-//     createStudentController,
-//     deleteStudentByIdController,
-//     getStudentByIdController,
-//     getStudentsController,
-//     patchStudentController,
-//     putStudentController
-// } from "../controllers/students.js";
-// import { ctrWrapper } from "../middlewares/ctrlWrapper.js";
-
-
-// const studentsRouter = Router();
-// studentsRouter.get('/students', ctrWrapper(getStudentsController));
-// studentsRouter.get('/students/:studentId', ctrWrapper(getStudentByIdController));
-// studentsRouter.post('/students', ctrWrapper(createStudentController));
-
-// studentsRouter.patch('/students/:studentId', ctrWrapper(patchStudentController));
-
-// studentsRouter.put('/students/:studentId', ctrWrapper(putStudentController));
-
-// studentsRouter.delete('/students/:studentId', ctrWrapper(deleteStudentByIdController));
-
-
 // export default studentsRouter;
 
 
