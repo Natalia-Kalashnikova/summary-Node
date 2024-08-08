@@ -145,20 +145,50 @@ export const getAllStudents = async ({
   perPage = 5,
   sortBy = '_id',
   sortOrder = 'asc',
+  filter = {},
 }) => {
   const skip = perPage * (page - 1);
 
+  const studentsFilters = Student.find();
+
+  if (filter.minAge) {
+    studentsFilters.where('age').gte(filter.minAge);
+  }
+
+  if (filter.maxAge) {
+    studentsFilters.where('age').lte(filter.maxAge);
+  }
+
+  if (filter.minAvgMark) {
+    studentsFilters.where('avgMark').gte(filter.minAvgMark);
+  }
+  if (filter.maxAverageMark) {
+    studentsFilters.where('avgMark').lte(filter.maxAverageMark);
+  }
+  if (filter.gender) {
+    studentsFilters.where('gender').equals(filter.gender);
+  }
+  if (typeof filter.onDuty === 'boolean') {
+    studentsFilters.where('onDuty').equals(filter.onDuty);
+  }
+
   const [studentsCount, students] = await Promise.all([
-    Student.find().countDocuments(),
-    Student.find().skip(skip).limit(perPage).sort({
-      [sortBy]: sortOrder,
-    }),
+    Student.find().merge(studentsFilters).countDocuments(),
+    Student.find()
+      .merge(studentsFilters)
+      .skip(skip)
+      .limit(perPage)
+      .sort({
+        [sortBy]: sortOrder,
+      })
+      .exec(),
   ]);
 
   const paginationInformation = createPaginationInformation(
     page,
     perPage,
-    studentsCount);
+    studentsCount,
+  );
 
   return {
     students,

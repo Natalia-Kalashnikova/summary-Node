@@ -160,13 +160,22 @@ import {
     getStudentById,
     upsertStudent
 } from "../services/students.js";
+import { parseFilterParams } from "../utils/parseFilterParams.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
 
 
 export const getStudentsController = async (req, res) => {
     const { page, perPage } = parsePaginationParams(req.query);
     const { sortBy, sortOrder } = req.query;
-    const students = await getAllStudents({ page, perPage, sortBy, sortOrder });
+    const filter = parseFilterParams(req.query);
+
+    const students = await getAllStudents({
+        page,
+        perPage,
+        sortBy,
+        sortOrder,
+        filter
+    });
 
     res.json({
         status: 200,
