@@ -1,3 +1,4 @@
+//summary
 // import Joi from "joi";
 
 
@@ -13,6 +14,8 @@
 //     avgMark: Joi.number().min(2).max(12).required(),
 //     onDuty: Joi.boolean(),
 // });
+
+//lection
 
 import Joi from "joi";
 
