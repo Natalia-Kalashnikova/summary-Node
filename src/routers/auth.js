@@ -18,4 +18,6 @@ router.post(
     ctrWrapper(loginUserController),
 );
 
+router.post('/logout', ctrWrapper(loginUserController));
+
 export default router;
