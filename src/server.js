@@ -5,7 +5,7 @@ import { env } from './utils/env.js';
 import { ENV_VARS } from './constants/index.js';
 import { errorHandlerMiddleware } from './middlewares/errorHandlerMiddleware.js';
 import { notFoundMiddleware } from './middlewares/notFoundMiddleware.js';
-import router from './routers/index';
+import router from './routers/index.js';
 import cookieParser from 'cookie-parser';
 
 
