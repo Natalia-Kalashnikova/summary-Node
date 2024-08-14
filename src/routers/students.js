@@ -11,6 +11,7 @@ import { ctrWrapper } from "../middlewares/ctrlWrapper.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { createStudentSchema, updateStudentSchema } from "../validation/students.js";
 import { isValidId } from "../middlewares/isValidId.js";
+import { authenticate } from "../middlewares/authenticate.js";
 
 
 const studentsRouter = Router();
@@ -47,6 +48,10 @@ studentsRouter.patch(
     validateBody(updateStudentSchema),
     ctrWrapper(patchStudentController)
 );
+
+studentsRouter.use(authenticate);
+
+studentsRouter.get('/', ctrWrapper(getStudentsController));
 
 
 export default studentsRouter;
