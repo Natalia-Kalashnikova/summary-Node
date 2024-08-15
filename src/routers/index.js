@@ -1,10 +1,14 @@
-import { Router } from 'express';
-import studentsRouter from './students.js';
-import authRouter from './auth.js';
+// **SUMMARY-CODE**
 
-const router = Router();
+// import { Router } from 'express';
+// import studentsRouter from './students.js';
+// import authRouter from './auth.js';
 
-router.use('/students', studentsRouter);
-router.use('/auth', authRouter);
+// const router = Router();
 
-export default router;
+// router.use('/students', studentsRouter);
+// router.use('/auth', authRouter);
+
+// export default router;
+
+// **WEBINAR-CODE**

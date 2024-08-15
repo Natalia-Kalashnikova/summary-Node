@@ -1,3 +1,5 @@
+// **SUMMARY-CODE**
+
 import mongoose from 'mongoose';
 import { env } from '../utils/env.js';
 import { ENV_VARS } from '../constants/index.js';
@@ -18,3 +20,5 @@ export const initMongoConnection = async () => {
     throw err;
   }
 };
+
+// **WEBINAR-CODE**
