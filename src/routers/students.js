@@ -86,6 +86,7 @@ import { isValidId } from "../middlewares/isValidId.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { createStudentSchema } from "../validation/createStudentSchema.js";
 import { updateStudentSchema } from "../validation/updateStudentSchema.js";
+import { checkRoles } from "../middlewares/checkRoles.js";
 
 
 const studentsRouter = Router();
@@ -96,9 +97,16 @@ studentsRouter.get('/students', ctrWrapper(getStudentsController));
 
 studentsRouter.get('/students/:studentId', ctrWrapper(getStudentByIdController));
 
-studentsRouter.post('/students', validateBody(createStudentSchema), ctrWrapper(createStudentController));
+studentsRouter.post('/students',
+    validateBody(createStudentSchema),
+    ctrWrapper(createStudentController)
+);
 
-studentsRouter.patch('/students/:studentId', validateBody(updateStudentSchema), ctrWrapper(patchStudentController));
+studentsRouter.patch('/students/:studentId',
+    checkRoles('teacher', 'parent'),
+    validateBody(updateStudentSchema),
+    ctrWrapper(patchStudentController)
+);
 
 studentsRouter.put('/students/:studentId', validateBody(createStudentSchema), ctrWrapper(putStudentController));
 
