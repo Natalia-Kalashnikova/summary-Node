@@ -23,7 +23,7 @@
 // };
 
 
-// **WEBINAR-CODE**
+// **WEBINAR-CODE*
 
 export const ENV_VARS = {
     PORT: 'PORT',
