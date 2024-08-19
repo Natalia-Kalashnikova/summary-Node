@@ -288,7 +288,7 @@ export const getStudentById = async (id) => {
 };
 
 export const createStudent = async (payload, userId) => {
-const student = await Student.create({...payload, parentId: userId});
+  const student = await Student.create({ ...payload, parentId: userId });
 
   return student;
 };
@@ -300,15 +300,16 @@ export const upsertStudent = async (id, payload, options = {}) => {
     ...options,
   });
 
-  if (!rawResult || rawResult.value) {
+  if (!rawResult || !rawResult.value) {
     throw createHttpError(404, 'Student not found');
   }
 
-    return {
+  return {
     student: rawResult.value,
     isNew: !rawResult?.lastErrorObject?.updatedExisting,
   };
 };
+
 
 export const deleteStudentById = async (studentId) => {
   await Student.findByIdAndDelete(studentId);

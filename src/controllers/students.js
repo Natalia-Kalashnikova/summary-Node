@@ -231,6 +231,7 @@ export const patchStudentController = async (req, res) => {
     const { body } = req;
     const {studentId} = req.params;
     const student = await upsertStudent(studentId, body);
+    
     res.status(200).json({
         status: 200,
         message: `Successfully patched student`,
