@@ -4,6 +4,8 @@
 // import { Student } from "../db/models/student.js";
 
 
+
+
 // export const checkRoles = (...roles) => async (req, res, next) => {
 //     const { user } = req;
 //     if (!user) {
@@ -40,8 +42,9 @@
 
 // **WEBINAR-CODE**
 
-import createHttpError from 'http-errors';
-import { Student } from '../db/models/student.js';
+import createHttpError from "http-errors";
+import { Student } from "../db/models/student.js";
+
 
 export const checkChildPermissions =
   (...roles) =>

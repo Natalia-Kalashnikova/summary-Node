@@ -65,12 +65,14 @@ const studentSchema = new Schema({
         type: Boolean,
         default: false,
     },
+    parentId: { type: Schema.ObjectId, required: true },
 },
     {
         timestamps: true,
         versionKey: false,
     },
 );
+
 
 
 export const Student = model('students', studentSchema);
