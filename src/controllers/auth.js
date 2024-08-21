@@ -79,7 +79,7 @@
 
 // **SUMMARY-CODE** 6
 
-import { loginUser, refreshUsersSession, registerUser, requestResetToken } from "../services/auth.js";
+import { loginUser, refreshUsersSession, registerUser, requestResetToken, resetPassword } from "../services/auth.js";
 import { ONE_DAY } from "../constants/index.js";
 import { logoutUser } from "../services/auth.js";
 
@@ -160,6 +160,15 @@ export const requestResetEmailController = async (req, res) => {
     await requestResetToken(req.boby.email);
     res.json({
         message: 'Reset password email was successfully sent!',
+        status: 200,
+        data: {},
+    });
+};
+
+export const resetPasswordController = async (req, res) => {
+    await resetPassword(req.bady);
+    res.json({
+        message: 'Password was successfully reset!',
         status: 200,
         data: {},
     });
