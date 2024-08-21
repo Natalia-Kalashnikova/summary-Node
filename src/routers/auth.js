@@ -1,10 +1,10 @@
-// **SUMMARY-CODE**
+// **SUMMARY-CODE** 5
 
 // import { Router } from "express";
 // import { validateBody } from '../middlewares/validateBody.js';
 // import {ctrWrapper } from '../middlewares/ctrlWrapper.js';
 // import { LoginUserSchema, registerUserSchema } from "../validation/auth.js";
-// import { loginUserController, refreshUserSessionController, registerUserController } from "../controllers/auth.js";
+// import { loginUserController, logoutUserController, refreshUserSessionController, registerUserController } from "../controllers/auth.js";
 
 // const router = Router();
 
@@ -22,7 +22,7 @@
 
 // router.post(
 //     '/logout',
-//     ctrWrapper(loginUserController),
+//     ctrWrapper(logoutUserController),
 // );
 
 // router.post(
@@ -32,35 +32,61 @@
 
 // export default router;
 
-// **WEBINAR-CODE**
+// **SUMMARY-CODE** 6
 
-import { Router } from 'express';
-import { ctrWrapper } from '../middlewares/ctrlWrapper.js';
-import {
-  loginUserController,
-  logoutController,
-  refreshTokenController,
-  registerUserController
-} from '../controllers/auth.js';
-import { registerUserSchema } from '../validation/registerUserSchema.js';
+import { Router } from "express";
 import { validateBody } from '../middlewares/validateBody.js';
-import { loginUserSchema } from '../validation/loginSchemaValidator.js';
+import {ctrWrapper } from '../middlewares/ctrlWrapper.js';
+import {
+    LoginUserSchema,
+    registerUserSchema,
+    requestResetEmailSchema,
+    resetPasswordSchema
+} from "../validation/auth.js";
+import {
+    loginUserController,
+    logoutUserController,
+    refreshUserSessionController,
+    registerUserController,
+    requestResetEmailController,
+    resetPasswordController
+} from "../controllers/auth.js";
 
 
-const authRouter = Router();
+const router = Router();
 
-authRouter.post(
-  '/register',
-  validateBody(registerUserSchema),
-  ctrWrapper(registerUserController),
+router.post(
+    '/register',
+    validateBody(registerUserSchema),
+    ctrWrapper(registerUserController),
 );
 
-authRouter.post(
-  '/login',
-  validateBody(loginUserSchema),
-  ctrWrapper(loginUserController),
+router.post(
+    '/login',
+    validateBody(LoginUserSchema),
+    ctrWrapper(loginUserController),
 );
-authRouter.post('/refresh-token', ctrWrapper(refreshTokenController));
-authRouter.post('/logout', ctrWrapper(logoutController));
 
-export default authRouter;
+router.post(
+    '/logout',
+    ctrWrapper(logoutUserController),
+);
+
+router.post(
+    '/refresh',
+    ctrWrapper(refreshUserSessionController),
+);
+
+router.post(
+    '/request-reset-email',
+    validateBody(requestResetEmailSchema),
+    ctrWrapper(requestResetEmailController),
+);
+
+router.post(
+    '/reset-password',
+    validateBody(resetPasswordSchema),
+    ctrWrapper(resetPasswordController),
+);
+
+export default router;

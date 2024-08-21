@@ -1,5 +1,4 @@
-// **SUMMARY-CODE**
-// **WEBINAR-CODE**
+// **SUMMARY-CODE** 4-5
 
 export const ctrWrapper = (controller) =>async(req, res, next)=> {
     try {

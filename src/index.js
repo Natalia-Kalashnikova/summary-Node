@@ -1,22 +1,29 @@
-// **WEBINAR-CODE**
-// import { initMongoConnection } from "./db/initMongoConnection.js";
-// import { Student } from "./db/models/student.js";
-// import { startServer } from "./server.js";
+  // **SUMMARY-CODE!!** 4-5
+
+// import { initMongoConnection } from './db/initMongoConnection.js';
+// import { startServer } from './server.js';
 
 // (async () => {
-  //     await initMongoConnection();
-  //     const students = await Student.find({});
-  //     console.log(students);
-  //     startServer();
-  // })();
+//   await initMongoConnection();
+//   startServer();
+// })();
 
 
-  // **SUMMARY-CODE**
+  // **SUMMARY-CODE!!** 6
 
+import { TEMP_UPLOAD_DIR, UPLOAD_DIR } from './constants/index.js';
 import { initMongoConnection } from './db/initMongoConnection.js';
 import { startServer } from './server.js';
+import { createDirIfNotExists } from './utils/createDirIfNotExists.js';
 
-(async () => {
+const bootstrap = async () => {
   await initMongoConnection();
+  await createDirIfNotExists(TEMP_UPLOAD_DIR);
+  await createDirIfNotExists(UPLOAD_DIR);
   startServer();
-})();
+};
+
+void bootstrap();
+
+
+
