@@ -1,4 +1,4 @@
-// **SUMMARY-CODE**
+// **SUMMARY-CODE** 5
 
 import { model, Schema } from "mongoose";
 import {ROLES} from '../../constants/index.js';
@@ -25,29 +25,3 @@ usersSchema.methods.toJSON = function () {
 
 export const UserCollection = model('users', usersSchema);
 
-// **WEBINAR-CODE**
-
-// import { Schema, model } from 'mongoose';
-
-// const userSchema = new Schema(
-//   {
-//     name: { type: String, required: true },
-//     password: { type: String, required: true },
-//     email: { type: String, required: true, unique: true },
-//     role: {
-//       type: String,
-//       required: true,
-//       default: ['parent'],
-//       enum: ['parent', 'teacher'],
-//     },
-//   },
-//   { timestamps: true, versionKey: false },
-// );
-
-// userSchema.methods.toJSON = function () {
-//   const obj = this.toObject();
-//   delete obj.password;
-//   return obj;
-// };
-
-// export const User = model('users', userSchema);
