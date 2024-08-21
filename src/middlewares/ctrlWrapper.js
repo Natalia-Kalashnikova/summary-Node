@@ -1,4 +1,4 @@
-// **SUMMARY-CODE** 5
+// **SUMMARY-CODE** 4-5
 
 export const ctrWrapper = (controller) =>async(req, res, next)=> {
     try {

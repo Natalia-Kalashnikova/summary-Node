@@ -1,4 +1,4 @@
-// **SUMMARY-CODE** 5
+// **SUMMARY-CODE** 5-5
 
 export const calculatePaginationData = (count, perPage, page) => {
     const totalPages = Math.ceil(count / perPage);
