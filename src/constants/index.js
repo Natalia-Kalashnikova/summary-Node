@@ -33,6 +33,7 @@
 
 
 // **SUMMARY-CODE** 6
+import path from 'node:path';
 
 export const ENV_VARS = {
     PORT: 'PORT',
@@ -64,4 +65,4 @@ export const SMTP = {
   SMTP_FROM: 'SMTP_FROM',
 };
 
-
+export const TEMPLATES_DIR = path.join(process.cwd(), 'src', 'templates');
