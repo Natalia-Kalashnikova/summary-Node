@@ -1,3 +1,4 @@
+// **SUMMARY-CODE** 6
 import fs from 'node:fs/promises';
 
 export const createDirIfNotExists = async (url) => {
