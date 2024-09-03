@@ -25,12 +25,7 @@
 //     ctrWrapper(logoutUserController),
 // );
 
-// router.post(
-//     '/refresh',
-//     ctrWrapper(refreshUserSessionController),
-// );
 
-// export default router;
 
 // **SUMMARY-CODE** 6
 
