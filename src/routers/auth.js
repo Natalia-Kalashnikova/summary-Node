@@ -20,10 +20,6 @@
 //     ctrWrapper(loginUserController),
 // );
 
-// router.post(
-//     '/logout',
-//     ctrWrapper(logoutUserController),
-// );
 
 
 
