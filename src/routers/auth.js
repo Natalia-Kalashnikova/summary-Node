@@ -14,14 +14,6 @@
 //     ctrWrapper(registerUserController),
 // );
 
-// router.post(
-//     '/login',
-//     validateBody(LoginUserSchema),
-//     ctrWrapper(loginUserController),
-// );
-
-
-
 
 // **SUMMARY-CODE** 6
 
