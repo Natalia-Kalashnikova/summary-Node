@@ -8,11 +8,7 @@
 
 // const router = Router();
 
-// router.post(
-//     '/register',
-//     validateBody(registerUserSchema),
-//     ctrWrapper(registerUserController),
-// );
+
 
 
 // **SUMMARY-CODE** 6
