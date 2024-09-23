@@ -101,7 +101,7 @@
 // studentsRouter.get('/', ctrWrapper(getStudentsController));
 
 
-// export default studentsRouter;
+
 
 
 // **SUMMARY-CODE** 6
