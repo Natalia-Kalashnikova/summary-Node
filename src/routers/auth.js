@@ -1,4 +1,4 @@
-// **SUMMARY-CODE** 6
+// **SUMMARY-CODE** 
 
 import { Router } from "express";
 import { validateBody } from '../middlewares/validateBody.js';
