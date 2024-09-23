@@ -98,7 +98,7 @@
 
 // studentsRouter.use(authenticate);
 
-// studentsRouter.get('/', ctrWrapper(getStudentsController));
+
 
 
 
