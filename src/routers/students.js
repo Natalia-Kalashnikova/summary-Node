@@ -96,14 +96,6 @@
 //     ctrWrapper(patchStudentController)
 // );
 
-// studentsRouter.use(authenticate);
-
-
-
-
-
-
-
 // **SUMMARY-CODE** 6
 
 import { Router } from "express";
