@@ -88,14 +88,6 @@
 //     ctrWrapper(putStudentController)
 // );
 
-// studentsRouter.patch(
-//     '/:studentId',
-//     checkRoles(ROLES.TEACHER),
-//     isValidId,
-//     validateBody(updateStudentSchema),
-//     ctrWrapper(patchStudentController)
-// );
-
 // **SUMMARY-CODE** 6
 
 import { Router } from "express";
