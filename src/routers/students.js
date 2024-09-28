@@ -85,8 +85,7 @@
 //     checkRoles(ROLES.TEACHER),
 //     isValidId,
 //     validateBody(createStudentSchema),
-//     ctrWrapper(putStudentController)
-// );
+
 
 // **SUMMARY-CODE** 6
 
