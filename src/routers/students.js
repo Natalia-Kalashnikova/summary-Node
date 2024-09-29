@@ -83,8 +83,7 @@
 // studentsRouter.put(
 //     '/:studentId',
 //     checkRoles(ROLES.TEACHER),
-//     isValidId,
-//     validateBody(createStudentSchema),
+
 
 
 // **SUMMARY-CODE** 6
