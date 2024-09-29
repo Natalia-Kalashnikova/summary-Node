@@ -80,11 +80,6 @@
 //     ctrWrapper(deleteStudentByIdController)
 // );
 
-// studentsRouter.put(
-//     '/:studentId',
-//     checkRoles(ROLES.TEACHER),
-
-
 
 // **SUMMARY-CODE** 6
 
