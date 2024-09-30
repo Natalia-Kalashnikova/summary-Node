@@ -77,8 +77,7 @@
 //     '/:studentId',
 //     checkRoles(ROLES.TEACHER),
 //     isValidId,
-//     ctrWrapper(deleteStudentByIdController)
-// );
+
 
 
 // **SUMMARY-CODE** 6
