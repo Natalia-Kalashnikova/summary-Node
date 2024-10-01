@@ -75,8 +75,7 @@
 
 // studentsRouter.delete(
 //     '/:studentId',
-//     checkRoles(ROLES.TEACHER),
-//     isValidId,
+
 
 
 
