@@ -73,11 +73,6 @@
 //     ctrWrapper(createStudentController)
 // );
 
-// studentsRouter.delete(
-//     '/:studentId',
-
-
-
 
 // **SUMMARY-CODE** 6
 
